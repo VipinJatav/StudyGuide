@@ -4,33 +4,7 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#10131b">
 <title>StudyGuide — Learn with clarity</title>
-<style><div class="row">
-<div class="field">
-<label>Class</label>
-<select id="qclass">
-<option value="">Select class</option>
-<option value="6">Class 6</option>
-<option value="7">Class 7</option>
-<option value="8">Class 8</option>
-<option value="9">Class 9</option>
-<option value="10">Class 10</option>
-<option value="11">Class 11</option>
-<option value="12">Class 12</option>
-</select>
-</div>
-<div class="field">
-<label>Subject</label>
-<select id="qsubject" disabled>
-<option value="">Select class first</option>
-</select>
-</div>
-</div>
-<div class="field" style="margin-top:15px">
-<label>Chapter</label>
-<select id="qchapter" disabled>
-<option value="">Select class and subject first</option>
-</select>
-</div>
+<style>
 :root{--bg:#10131b;--bg2:#171b26;--surface:#1b202c;--surface2:#222938;--ink:#f7f8fc;--muted:#b7bfce;--soft:#dfe5ef;--line:#343d4e;--accent:#dce5f2;--accentInk:#121722;--glow:#ffffff18;--shadow:0 18px 55px #0006}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 12% -10%,#ffffff19,transparent 38%),radial-gradient(ellipse at 100% 8%,#8d9ab51c,transparent 30%),var(--bg);color:var(--ink);font:15px/1.55 Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Arial,sans-serif}button,input,select,textarea{font:inherit}button{cursor:pointer}.wrap{max-width:1160px;margin:auto;padding:0 24px}
 header{position:sticky;top:0;z-index:20;background:#10131beF;border-bottom:1px solid #ffffff16;backdrop-filter:blur(18px)}.nav{height:74px;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{font-size:22px;font-weight:850;letter-spacing:-.8px;white-space:nowrap}.brand b{color:#dce5f2}.brand-mark{display:inline-grid;place-items:center;width:31px;height:31px;margin-right:8px;border:1px solid #ffffff45;border-radius:10px;background:linear-gradient(145deg,#fff,#aab7ca);color:#151a24;font-size:17px}.navlinks{display:flex;align-items:center;gap:4px}.navlinks button,.plain{border:0;background:transparent;color:var(--muted);padding:10px 12px;border-radius:11px}.navlinks button:hover,.navlinks button.active{background:#ffffff13;color:#fff}.nav-actions{display:flex;gap:9px;align-items:center}.btn{border:1px solid #ffffff28;background:linear-gradient(120deg,#f7f9fc,#cbd4e2);color:#151a24;padding:11px 17px;border-radius:12px;font-weight:800;box-shadow:0 7px 20px #0003}.btn:hover{filter:brightness(1.06);transform:translateY(-1px)}.btn-outline{background:#ffffff0c;border:1px solid #ffffff35;color:var(--ink);box-shadow:none}.round{width:40px;height:40px;border-radius:12px;background:#ffffff0c;color:#fff;border:1px solid #ffffff25}.menu{display:none}.get-started{padding:8px 12px;font-size:13px;border-radius:10px;white-space:nowrap}.chat-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:4px 2px 12px;border-bottom:1px solid #ffffff1b}.chat-heading h3{margin:0 0 2px;font-size:20px}.chat-heading p{margin:0;font-size:13px}.ai-chat{height:clamp(470px,68vh,650px);padding:20px}.ai-chat .messages{min-height:0}
@@ -49,7 +23,7 @@ header{position:sticky;top:0;z-index:20;background:#10131beF;border-bottom:1px s
 </section>
 <section class="page" id="notes"><div class="section-head"><span class="tag">NOTES LIBRARY</span><h2>Find the notes you need</h2><p>Select a class, subject and chapter. Subject availability can vary by school.</p></div><div class="panel"><div class="row"><div class="field"><label>Class</label><select id="nclass"><option value="">Select class</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option>11</option><option>12</option></select></div><div class="field"><label>Subject</label><select id="nsubject" disabled><option value="">Select class first</option></select></div></div><div class="field" style="margin-top:15px"><label>Chapter</label><select id="nchapter"><option>Select class and subject first</option></select></div><div class="field" style="margin-top:15px"><label>Select Medium</label><select id="nlang"><option value="English">English Medium</option><option value="Hindi">Hindi Medium</option></select></div><div class="contentbox" id="notesout"><b>Your notes will appear here</b><p class="muted">The notes library will be connected after the design is approved.</p></div></div></section>
 <section class="page" id="ai"><div class="section-head"><span class="tag">LIVE AI STUDY PARTNER</span><h2>Your personal study assistant</h2><p>Ask a question, clear a concept or get help with your homework. StudyGuide AI is here to help you understand.</p></div><div class="panel chat ai-chat"><div class="chat-heading"><div><h3>StudyGuide AI</h3><p class="muted">Ask anything about your studies</p></div><span class="tag">AI TUTOR</span></div><div class="messages" id="messages"><div class="bubble bot">Hi! I’m your StudyGuide AI tutor. What topic would you like help with today?</div></div><div class="chatbar"><input id="question" placeholder="Type your question here..." onkeydown="if(event.key==='Enter')sendQuestion()"><button class="btn" id="send" onclick="sendQuestion()">Send</button></div><p class="notice" id="aistatus">AI responses may take a few seconds. Availability and provider limits may apply.</p></div></section>
-<section class="page" id="quiz"><div class="section-head"><span class="tag">PRACTICE ZONE</span><h2>Check your understanding</h2><p>Choose your class, subject and chapter to practise.</p></div><div class="panel"><div class="field" style="margin-top:15px"><label>Select Medium</label><select id="qmedium"><option value="English">English Medium</option><option value="Hindi">Hindi Medium</option></select></div><button class="btn" style="margin-top:16px" onclick="startQuiz()">Start quiz →</button><div id="quizout" class="contentbox hide"></div><p class="notice">This is a layout preview with one sample question. The complete class-wise quiz bank will be added separately.</p></div></section>
+<section class="page" id="quiz"><div class="section-head"><span class="tag">PRACTICE ZONE</span><h2>Check your understanding</h2><p>Choose your class, subject and chapter to practise.</p></div><div class="panel"><div class="row"><div class="field"><label>Class</label><select id="qclass"><option>Class 10</option><option>Class 6</option><option>Class 7</option><option>Class 8</option><option>Class 9</option><option>Class 11</option><option>Class 12</option></select></div><div class="field"><label>Subject</label><select id="qsubject"><option>Science</option><option>Mathematics</option><option>English</option><option>Social Science</option></select></div><div class="field"><label>Chapter</label><select id="qchapter"><option>Light — Reflection and Refraction</option><option>Real Numbers</option><option>Life Processes</option></select></div></div><div class="field" style="margin-top:15px"><label>Select Medium</label><select id="qmedium"><option value="English">English Medium</option><option value="Hindi">Hindi Medium</option></select></div><button class="btn" style="margin-top:16px" onclick="startQuiz()">Start quiz →</button><div id="quizout" class="contentbox hide"></div><p class="notice">This is a layout preview with one sample question. The complete class-wise quiz bank will be added separately.</p></div></section>
 <section class="page" id="papers"><div class="section-head"><span class="tag">EXAM PREPARATION</span><h2>Previous-year question papers</h2><p>Choose class, subject and year to open a paper and its answer key.</p></div><div class="panel"><div class="row"><div class="field"><label>Class</label><select id="pclass" onchange="updatePaperSubjects()"><option>Class 10</option><option>Class 12</option></select></div><div class="field"><label>Subject</label><select id="psubject"></select></div><div class="field"><label>Year</label><select id="pyear"><option>2025</option><option>2024</option><option>2023</option></select></div></div><div class="field" style="margin-top:15px"><label>Select Medium</label><select id="pmedium"><option value="English">English Medium</option><option value="Hindi">Hindi Medium</option></select></div><button class="btn" style="margin-top:16px" onclick="showPaper()">Find question paper →</button><div id="paperout" class="contentbox hide"></div><p class="notice">Only verified papers and answer keys will be added. This preview does not present invented content as an actual board paper.</p></div></section>
 <section class="page" id="profile"><div class="section-head"><span class="tag">PROFILE & SETTINGS</span><h2>Your StudyGuide account</h2><p>Manage your account, plan and preferences.</p></div><div class="cards" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr))"><div class="panel"><h3>Login / Sign up</h3><div class="field"><label>Email</label><input type="email" placeholder="Enter your email"></div><div class="field" style="margin-top:10px"><label>Password</label><input type="password" placeholder="Enter password"></div><button class="btn" style="margin-top:14px" onclick="alert('Account sign-in will be connected in the next development stage. This preview does not collect account details.')">Continue</button><p class="notice">Authentication is not active in this preview.</p></div><div class="panel"><span class="tag">FREE</span><h3>Free Plan</h3><div class="price">₹0</div><ul class="list"><li>Core learning tools</li><li>Daily AI usage limit</li><li>Sponsored placements may appear</li></ul></div><div class="panel"><span class="tag">PLUS</span><h3>StudyGuide Plus</h3><div class="price">₹49 <small>/ month*</small></div><ul class="list"><li>Higher daily AI allowance</li><li>Ad-free experience</li><li>Extra learning features</li></ul><p class="notice">*Proposed price. No payment is enabled.</p></div></div><div class="panel" style="margin-top:15px"><h3>Preferences</h3><div class="row"><div class="field"><label>Website language</label><select id="siteLang" onchange="setLang(this.value)"><option>English</option><option>Hindi</option></select></div></div><p class="notice">The main interface is English. Hindi explanations and selected interface labels can be expanded in the localisation stage.</p></div></section>
 </main><footer class="footer"><div class="wrap">© 2026 StudyGuide · Made By Vipin. <span style="float:right">CBSE / NCERT learning support</span></div></footer>
@@ -72,95 +46,9 @@ document.getElementById('nclass').addEventListener('change',updateNoteSubjects);
 document.getElementById('nsubject').addEventListener('change',fillChapters);
 document.getElementById('nchapter').addEventListener('change',()=>{if(document.getElementById('nchapter').value)document.getElementById('notesout').innerHTML='<b>Chapter selected</b><p class="muted">Notes for this class and subject are not yet connected.</p>'});
 
-function resetQuizChapter(message){
-const chapter=document.getElementById('qchapter');
-chapter.innerHTML='';
-chapter.add(new Option(message,''));
-chapter.disabled=true;
-document.getElementById('quizout').classList.add('hide');
-}
-
-function updateQuizSubjects(){
-const cls=document.getElementById('qclass').value;
-const subject=document.getElementById('qsubject');
-subject.innerHTML='';
-subject.disabled=!cls;
-
-if(!cls){
-subject.add(new Option('Select class first',''));
-resetQuizChapter('Select class and subject first');
-return;
-}
-
-subject.add(new Option('Select subject',''));
-(noteSubjects[cls]||[]).forEach(item=>{
-subject.add(new Option(item,item));
-});
-
-resetQuizChapter('Select subject first');
-}
-
-function updateQuizChapters(){
-const cls=document.getElementById('qclass').value;
-const subject=document.getElementById('qsubject').value;
-const chapter=document.getElementById('qchapter');
-
-chapter.innerHTML='';
-
-if(!cls||!subject){
-chapter.add(new Option('Select subject first',''));
-chapter.disabled=true;
-document.getElementById('quizout').classList.add('hide');
-return;
-}
-
-chapter.disabled=false;
-chapter.add(new Option('Select chapter',''));
-
-['Introduction','Key Concepts','Chapter Review','Important Questions'].forEach(item=>{
-chapter.add(new Option(item,item));
-});
-
-document.getElementById('quizout').classList.add('hide');
-}
-
-document.getElementById('qclass').addEventListener('change',updateQuizSubjects);
-document.getElementById('qsubject').addEventListener('change',updateQuizChapters);
-
 function esc(s){return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 async function sendQuestion(){const inp=document.getElementById('question'),q=inp.value.trim();if(!q)return;const m=document.getElementById('messages'),status=document.getElementById('aistatus');m.insertAdjacentHTML('beforeend','<div class="bubble user">'+esc(q)+'</div>');inp.value='';const wait=document.createElement('div');wait.className='bubble bot';wait.textContent='Thinking…';m.appendChild(wait);m.scrollTop=m.scrollHeight;document.getElementById('send').disabled=true;try{const r=await fetch('https://studyguide.vipinjatav077.workers.dev',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({question:q,className:'General',subject:'General',language:'English'})});if(!r.ok)throw new Error('Server response '+r.status);const data=await r.json();wait.textContent=data.answer||data.response||data.message||'The AI server returned an empty response.'}catch(e){wait.textContent='Live AI could not connect. Check that your Worker is active and allows this website origin. ('+e.message+')';status.textContent='AI connection unavailable right now.'}finally{document.getElementById('send').disabled=false;m.scrollTop=m.scrollHeight}}
-function startQuiz(){
-const cls=document.getElementById('qclass').value;
-const subject=document.getElementById('qsubject').value;
-const chapter=document.getElementById('qchapter').value;
-const medium=document.getElementById('qmedium').value;
-
-if(!cls||!subject||!chapter){
-alert('Please select class, subject and chapter first.');
-return;
-}
-
-const out=document.getElementById('quizout');
-out.classList.remove('hide');
-
-out.innerHTML=
-'<p class="muted">Class '+esc(cls)+' · '+esc(subject)+' · '+esc(chapter)+' · '+esc(medium)+' Medium</p>'+
-'<div class="quizq"><b>Sample question: Which of these is a renewable source of energy?</b>'+
-'<label class="option"><input type="radio" name="q1" value="a"> Coal</label>'+
-'<label class="option"><input type="radio" name="q1" value="b"> Solar energy</label>'+
-'<label class="option"><input type="radio" name="q1" value="c"> Petroleum</label>'+
-'<button class="btn" onclick="checkAnswer()">Check answer</button>'+
-'<p id="feedback" class="notice"></p></div>';
-}
-
-function checkAnswer(){
-const v=document.querySelector('input[name=q1]:checked');
-
-document.getElementById('feedback').textContent=
-!v?'Please choose an answer.':
-v.value==='b'?'Correct — solar energy is renewable.':
-'Not quite. Review the options and try again.';
-}
+function startQuiz(){const out=document.getElementById('quizout');out.classList.remove('hide');out.innerHTML='<p class="muted">Selected medium: '+esc(document.getElementById('qmedium').value)+' Medium</p><div class="quizq"><b>Sample question: Which of these is a renewable source of energy?</b><label class="option"><input type="radio" name="q1" value="a"> Coal</label><label class="option"><input type="radio" name="q1" value="b"> Solar energy</label><label class="option"><input type="radio" name="q1" value="c"> Petroleum</label><button class="btn" onclick="checkAnswer()">Check answer</button><p id="feedback" class="notice"></p></div>'}function checkAnswer(){const v=document.querySelector('input[name=q1]:checked');document.getElementById('feedback').textContent=!v?'Please choose an answer.':v.value==='b'?'Correct — solar energy is renewable.':'Not quite. Review the options and try again.'}
 const paperSubjects={
 'Class 10':['Mathematics Standard','Mathematics Basic','Science','Social Science','English Language & Literature','English Communicative','Hindi Course A','Hindi Course B','Sanskrit','Information Technology','Computer Applications','Home Science','Painting'],
 'Class 12':['English Core','Hindi Core','Mathematics','Applied Mathematics','Physics','Chemistry','Biology','Accountancy','Business Studies','Economics','History','Geography','Political Science','Sociology','Psychology','Physical Education','Computer Science','Informatics Practices','Entrepreneurship','Home Science','Fine Arts','Legal Studies','Engineering Graphics']
