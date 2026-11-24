@@ -78,7 +78,11 @@ header{position:sticky;top:0;z-index:20;background:#10131beF;border-bottom:1px s
 </style></head>
 <body>
 <header><div class="wrap nav"><div class="brand">
-  <img src="logo.jpg" alt="StudyGuide" style="height:42px;width:auto;display:block;object-fit:contain;">
+  <img src="logo.png" alt="StudyGuide Logo"
+       style="height:42px;width:auto;display:block;object-fit:contain;">
+  <span style="font-size:22px;font-weight:700;color:inherit;">
+    Study<b style="color:#38bdf8;">Guide</b>
+  </span>
 </div><nav class="navlinks" id="navlinks"><button class="active" data-page="home">Home</button><button data-page="notes">Notes</button><button data-page="ai">Live AI</button><button data-page="quiz">Quiz</button><button data-page="papers">PYQ Papers</button><button data-page="profile">Profile</button></nav><div class="nav-actions"><button class="btn get-started" onclick="showPage('profile')">LogIn / SignUp</button><button class="round menu" onclick="document.getElementById('navlinks').classList.toggle('open')">☰</button></div></div></header>
 <main class="wrap">
 <section class="page active" id="home">
